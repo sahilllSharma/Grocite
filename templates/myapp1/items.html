@@ -1,0 +1,19 @@
+{% extends "myapp1/base.html" %}
+{% block body_block %}
+    {% if itemlist %}
+        <h2> List of Items </h2>
+        <ol>
+            {% for item in itemlist %}
+                <li>
+
+                    <a href="{% url "myapp1:itemdetail" item_id=item.id %}"> {{ item.name }}</a>
+                    of price: ${{ item.price }}
+                </li>
+            {% endfor %}
+        </ol>
+    {% else %}
+        <strong> None of the items is available! </strong>
+    {% endif %}
+
+    <a href="{% url 'myapp1:placeorder' %}">Order Page</a>
+{% endblock %}

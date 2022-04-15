@@ -1,0 +1,24 @@
+{% extends 'myapp1/base.html' %}
+
+{% block body_block %}
+{% endblock %}
+
+<body>
+
+
+{% if type_list%}
+<h2>List of Types </h2>
+<ol>
+	{%for type in type_list%}
+        <li>
+        <a href="{% url 'myapp1:detail'  type_no=type.id %}">{{ type.name }}</a>
+        </li>
+{% endfor%}
+</ol>
+{% else %}
+<strong>None of the types is available!</strong>
+{% endif %}
+{#<p><a href="/about">AboutPage_hard_coded</a></p>#}
+{% comment %}<p><a href="{% url 'myapp1:about' %}">AboutPage</a></p>{% endcomment %}
+</body>
+</html>

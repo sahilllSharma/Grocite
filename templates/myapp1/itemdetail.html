@@ -1,0 +1,17 @@
+{% extends "myapp1/base.html" %}
+{% block body_block %}
+    {{ msg }}
+    {% if item.stock %}
+        <h1>Item details and Interest form</h1>
+        <p> Item name: {{ item.name }} </p>
+        <p> People interested: {{ item.interested }} </p>
+        <p> Item price: {{ item.price }} </p>
+        <form action="{% url "myapp1:itemdetail" item_id=item.id %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    {% else %}
+        <strong> No stock available for the item! </strong>
+    {% endif %}
+{% endblock %}

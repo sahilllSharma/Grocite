@@ -1,0 +1,8 @@
+{% extends "myapp1/base.html" %}
+ {% block body_block %}
+    <h2>Items having type with name {{ typeId }} </h2>
+    {% for item in itemsType %}
+        <p>{{ item.price }} : {{ item }} </p>
+
+    {% endfor%}
+{% endblock %}

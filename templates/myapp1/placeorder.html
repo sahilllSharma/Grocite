@@ -1,0 +1,22 @@
+{% extends "myapp1/base.html" %}
+{% block body_block %}
+    <h1>You can place your order here.</h1>
+    {{ msg }}
+    {% if itemlist %}
+        <h2> List of Items </h2>
+        <ol>
+            {% for item in itemlist %}
+                <li>
+                    {{ item.name }} of price: ${{ item.price }}
+                </li>
+            {% endfor %}
+        </ol>
+        <form action="{% url "myapp1:placeorder" %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    {% else %}
+        <strong> No Item Found !!! </strong>
+    {% endif %}
+{% endblock %}
